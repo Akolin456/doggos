@@ -1,0 +1,29 @@
+.login{
+    color: white;
+    background-color: #0000004a;
+    height: 40px;
+    width: 95px;
+    border-radius: 16px;
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    
+    
+    
+    
+
+}
+
+.signup{
+    color: white;
+    background-color: #0000004a;
+    height: 24px;
+    width: 63px;
+    display: flex;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    align-items: center;
+}
+

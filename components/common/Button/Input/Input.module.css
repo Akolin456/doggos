@@ -1,0 +1,12 @@
+.userinput{
+    height: 38px;
+    width: 300px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    background-color: #0000004a;
+    color: white;
+    padding-left: 10px;
+    font-size: 1em;
+}
