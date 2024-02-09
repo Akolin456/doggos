@@ -4,5 +4,4 @@ class InvalidCredentialException extends Error {
         this.name = "InvalidCredentialException";
     }
 }
-
-module.exports = InvalidCredentialException
+export default InvalidCredentialException;

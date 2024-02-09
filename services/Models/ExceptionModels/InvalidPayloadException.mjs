@@ -6,4 +6,4 @@ class InvalidPayloadException extends Error {
     }
 }
 
-module.exports = InvalidPayloadException
+export default InvalidPayloadException

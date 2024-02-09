@@ -5,4 +5,4 @@ class UserNotFoundException extends Error {
     }
 }
 
-module.exports = UserNotFoundException
+export default UserNotFoundException
