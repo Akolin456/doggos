@@ -29,21 +29,21 @@ export async function SignIn(email, password) {
     400 :- Invalid Payload
      */
 
-    //Prepare the payload
+    // Prepare the payload
     const payload = JSON.stringify({
         userId: email, password: password
     });
 
     Log(`Payload is ${payload}`);
 
-    //Call User Service
-    const resp = await fetch(userServiceUrl, {
+    // Call User Service with a timeout of 30 seconds
+    const resp = await fetchWithTimeout(userServiceUrl, {
         method: "POST", headers: {
             "Content-Type": "application/json"
-        }, body: payload, timeout: 30000
-    })
+        }, body: payload
+    });
 
-    //Throw exception conditionally if status code is not 200
+    // Throw exception conditionally if status code is not 200
     if (resp.status !== 200) {
         Log(`Response Status Code is not 200. It's ${resp.status}`)
         Log(`Response Status Code is not 200. It's Body is ${resp.body.toString()}`)
@@ -63,12 +63,17 @@ export async function SignIn(email, password) {
     Log(`Response Body Dict is ${respBody}`)
     const token = respBody.data;
 
-    //Throw exception if Token is Null or Empty
+    // Throw exception if Token is Null or Empty
     if (!token || token === "") {
         throw new Error("JWT Token from Response was Empty");
     }
     return token;
 }
+
+async function fetchWithTimeout(url, options, timeout = 30000) {
+    return Promise.race([fetch(url, options), new Promise((_, reject) => setTimeout(() => reject(new Error('Request timed out')), timeout))]);
+}
+
 
 function Log(String) {
     if (verboseLog) {
