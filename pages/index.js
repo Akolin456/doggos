@@ -1,6 +1,6 @@
-import LoginPage from "@/components/LoginPageComponents/LoginPageComponents";
+import LandingPage from "@/components/LandingPageComponents/LandingPageComponents";
 const HomePage = () => {
-  return <LoginPage />;
+  return <LandingPage />;
 };
 
 export default HomePage;

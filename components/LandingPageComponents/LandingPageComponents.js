@@ -1,11 +1,10 @@
 import Login from "../AuthenticationBox/LoginComponent/Login";
-import Styles from "./LoginPage.module.css";
-import Button from "../common/Button/Button";
-import ButtonStyles from "../common/Button/Button.module.css";
+import Styles from "./LandingPage.module.css";
 import Image from "next/image";
 import logo from "../../public/Assets/OSicon.png";
-
-const LoginPage = () => {
+import SignUpPage from "../SignupPageComponents/SignupPageComponents";
+import UserLogo from "../UserLogoComponemts/UserLogoComponents";
+const LandingPage = () => {
   return (
     <div className={Styles.LoginPage}>
       <div className={Styles.textcontainer}>
@@ -18,19 +17,12 @@ const LoginPage = () => {
       <div className={Styles.logosandAuthboxContainer}>
         <Image className={Styles.logo} src={logo} alt="logo" />
         <div className={Styles.doogos}>Sign in to Doggos</div>
-        <Login />
-        <div className={Styles.signupcontainer}>
-          <div className={Styles.signup}>
-            {" "}
-            New to Doggos?{" "}
-            <span className={Styles.signupwithemail}>Sign Up with Email</span>
-          </div>
-
-          <Button className={ButtonStyles.signup}>Sign Up</Button>
-        </div>
+        {/* <Login /> */}
+        {/* <SignUpPage /> */}
+        <UserLogo />
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default LandingPage;

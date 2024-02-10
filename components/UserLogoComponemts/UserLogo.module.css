@@ -1,0 +1,31 @@
+.UserLogoContainer{
+    border-radius: 8px;
+    border-color: white;
+    border-style: solid;
+    height: 246px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 214px;
+    margin-bottom: 20px;
+
+}
+
+.Setuserlogo{
+    color: white;
+}
+
+.Userlogo{
+    background-color: black;
+    border-radius: 76px;
+    border-color: white;
+    border-style: solid;
+    height: 120px;
+    width: 120px;
+}
+
+.Username{
+    color: white;
+    margin-bottom: 44px;
+}

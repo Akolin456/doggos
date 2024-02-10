@@ -1,8 +1,8 @@
 import Button from "../../common/Button/Button";
 import ButtonStyles from "../../common/Button/Button.module.css";
 import Styles from "./Login.module.css";
-import Input from "@/components/common/Button/Input/Input";
-import InputStyles from "../../common/Button/Input/Input.module.css";
+import Input from "../../common/Input/Input";
+import InputStyles from "../../common/Input/Input.module.css";
 import { useState } from "react";
 import { credential } from "../../../dummy/dummy";
 
@@ -45,9 +45,19 @@ const SignIn = () => {
         <div className={Styles.forgotpasswordcontainer}>
           <div className={Styles.forgotpassword}>forgot password</div>
         </div>
+
         <Button onClick={handleClick} className={ButtonStyles.login}>
           Log In
         </Button>
+      </div>
+      <div className={Styles.signupcontainer}>
+        <div className={Styles.signup}>
+          {" "}
+          New to Doggos?{" "}
+          <span className={Styles.signupwithemail}>Sign Up with Email</span>
+        </div>
+
+        <Button className={ButtonStyles.signup}>Sign Up</Button>
       </div>
     </>
   );
