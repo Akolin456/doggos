@@ -27,3 +27,34 @@
     align-items: center;
 }
 
+.submit{
+    color: white;
+    background-color: #0000004a;
+    height: 28px;
+    width: 85px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    
+    
+}
+.cancel{
+    color: white;
+    background-color: #0000004a;
+    height: 28px;
+    width: 85px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    
+}
+
+

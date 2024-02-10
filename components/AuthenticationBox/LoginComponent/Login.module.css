@@ -30,6 +30,19 @@
   margin-right:226px;
 }
 
+.signupcontainer{
+  color: white;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  height: 8vh;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
 
 
 
