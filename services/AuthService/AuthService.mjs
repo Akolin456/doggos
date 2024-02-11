@@ -2,7 +2,6 @@ import fetch from "node-fetch";
 import InvalidCredentialException from "../Models/ExceptionModels/InvalidCrednetialException.mjs";
 import UserNotFoundException from "../Models/ExceptionModels/UserNotFoundException.mjs";
 import InvalidPayloadException from "../Models/ExceptionModels/InvalidPayloadException.mjs";
-import {error} from "next/dist/build/output/log";
 
 const userServiceUrl = "https://7fkgoc5qr4.execute-api.ap-south-1.amazonaws.com/DEV/user-service";
 let verboseLog = true;
@@ -71,18 +70,22 @@ export async function SignIn(email, password) {
     return token;
 }
 
+/**
+ * Sign up a user. Throws exception if failed. If user Registered Successfully the function will execute without any exception
+ * @param email Email To Register
+ * @param password Password To Register
+ * @return {Promise<void>}
+ */
 export async function SignUp(email, password) {
     const payLoad = JSON.stringify({
         userId: email, password: password
     })
     const resp = await fetchWithTimeout(userServiceUrl, {
-        method: "PUT",
-        headers: {
+        method: "PUT", headers: {
             "CONTENT-TYPE": "APPLICATION/json"
-        },
-        body: payLoad,
+        }, body: payLoad,
     })
-    if (resp.status !== 200){
+    if (resp.status !== 200) {
         throw new Error(`status code was ${resp.status} and body is ${resp.body.toString()}`)
     }
 }

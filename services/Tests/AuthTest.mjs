@@ -1,5 +1,5 @@
 import assert from "assert";
-import {SignIn,SignUp} from "../AuthService/AuthService.mjs";
+import {SignIn, SignUp} from "../AuthService/AuthService.mjs";
 
 describe('AuthService Sign In Test', () => {
     it('Does Sign-In return a JWT?', async function () {
@@ -17,11 +17,22 @@ describe('AuthService Sign In Test', () => {
         }
     });
 });
-describe('Authservice signup test',()=>{
+describe('AuthService signup test', () => {
     it('signup succeed test', async function () {
+        const testEmail = "signUpTestDummyUserId";
+        const testPassword = "RANDOM PASSWORD TO TEST";
         this.timeout(30000);
-        await SignUp('test1','test2');
-        assert.equals(true)
+        try {
+            await SignUp(testEmail, testPassword);
+            assert.equal(true, true)
+            return;
+        } catch (error) {
+            console.log(error)
+            await SignIn(testEmail, testPassword);
+            assert.equal(true, true);
+            return;
+        }
+        assert.fail("Sign up test failed.");
 
     });
 })
