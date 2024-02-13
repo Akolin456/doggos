@@ -7,6 +7,7 @@ import { useState } from "react";
 import { credential } from "../../../dummy/dummy";
 import { useLandingPageContext } from "@/contexts/LandingPageContext";
 import { useRouter } from "next/router";
+import { SignInFunction } from "@/services/AuthService/AuthService";
 
 const SignIn = () => {
   const router = useRouter();
@@ -21,11 +22,12 @@ const SignIn = () => {
     SetSignUpBoxState(true);
   };
 
-  const handleClick = () => {
-    if (username == usernameValue && password == passwordValue) {
-      router.push("/home");
-    } else {
-      alert("login failed");
+  const handleClick = async () => {
+    try {
+      const response = await SignInFunction(usernameValue, passwordValue);
+      console.log("Sign-in successful:", response);
+    } catch (error) {
+      console.error("Sign-in failed:", error);
     }
   };
 
