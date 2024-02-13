@@ -70,6 +70,26 @@ export async function SignIn(email, password) {
     return token;
 }
 
+/**
+ * Sign up a user. Throws exception if failed. If user Registered Successfully the function will execute without any exception
+ * @param email Email To Register
+ * @param password Password To Register
+ * @return {Promise<void>}
+ */
+export async function SignUp(email, password) {
+    const payLoad = JSON.stringify({
+        userId: email, password: password
+    })
+    const resp = await fetchWithTimeout(userServiceUrl, {
+        method: "PUT", headers: {
+            "CONTENT-TYPE": "APPLICATION/json"
+        }, body: payLoad,
+    })
+    if (resp.status !== 200) {
+        throw new Error(`status code was ${resp.status} and body is ${resp.body.toString()}`)
+    }
+}
+
 async function fetchWithTimeout(url, options, timeout = 30000) {
     return Promise.race([fetch(url, options), new Promise((_, reject) => setTimeout(() => reject(new Error('Request timed out')), timeout))]);
 }
