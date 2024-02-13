@@ -5,15 +5,25 @@ import Input from "../../common/Input/Input";
 import InputStyles from "../../common/Input/Input.module.css";
 import { useState } from "react";
 import { credential } from "../../../dummy/dummy";
+import { useLandingPageContext } from "@/contexts/LandingPageContext";
+import { useRouter } from "next/router";
 
 const SignIn = () => {
+  const router = useRouter();
+  const { SetLoginBoxState, SetSignUpBoxState } = useLandingPageContext();
   const [usernameValue, SetusernameValue] = useState("");
   const [passwordValue, SetpasswordValue] = useState("");
 
   const { username, password } = credential;
+
+  const handleSignUp = () => {
+    SetLoginBoxState(false);
+    SetSignUpBoxState(true);
+  };
+
   const handleClick = () => {
     if (username == usernameValue && password == passwordValue) {
-      alert("login done");
+      router.push("/home");
     } else {
       alert("login failed");
     }
@@ -57,7 +67,9 @@ const SignIn = () => {
           <span className={Styles.signupwithemail}>Sign Up with Email</span>
         </div>
 
-        <Button className={ButtonStyles.signup}>Sign Up</Button>
+        <Button className={ButtonStyles.signup} onClick={handleSignUp}>
+          Sign Up
+        </Button>
       </div>
     </>
   );

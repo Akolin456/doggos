@@ -4,7 +4,11 @@ import Image from "next/image";
 import logo from "../../public/Assets/OSicon.png";
 import SignUpPage from "../SignupPageComponents/SignupPageComponents";
 import UserLogo from "../UserLogoComponemts/UserLogoComponents";
+import { useLandingPageContext } from "@/contexts/LandingPageContext";
+
 const LandingPage = () => {
+  const { loginBoxState, signupBoxState, userLogoBoxState } =
+    useLandingPageContext();
   return (
     <div className={Styles.LoginPage}>
       <div className={Styles.textcontainer}>
@@ -17,9 +21,10 @@ const LandingPage = () => {
       <div className={Styles.logosandAuthboxContainer}>
         <Image className={Styles.logo} src={logo} alt="logo" />
         <div className={Styles.doogos}>Sign in to Doggos</div>
-        {/* <Login /> */}
-        {/* <SignUpPage /> */}
-        <UserLogo />
+
+        {(loginBoxState && <Login />) ||
+          (signupBoxState && <SignUpPage />) ||
+          (userLogoBoxState && <UserLogo />)}
       </div>
     </div>
   );
