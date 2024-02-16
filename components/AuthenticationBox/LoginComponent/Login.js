@@ -5,17 +5,40 @@ import Input from "../../common/Input/Input";
 import InputStyles from "../../common/Input/Input.module.css";
 import { useState } from "react";
 import { credential } from "../../../dummy/dummy";
+import { useLandingPageContext } from "@/contexts/LandingPageContext";
+import { useRouter } from "next/router";
+import { SignInFunction } from "@/services/AuthService/AuthService";
+import { useCookies } from "react-cookie";
 
 const SignIn = () => {
+  const router = useRouter();
+  const { SetLoginBoxState, SetSignUpBoxState } = useLandingPageContext();
   const [usernameValue, SetusernameValue] = useState("");
   const [passwordValue, SetpasswordValue] = useState("");
+  const [cookie, SetCookie] = useCookies("");
 
   const { username, password } = credential;
-  const handleClick = () => {
-    if (username == usernameValue && password == passwordValue) {
-      alert("login done");
-    } else {
-      alert("login failed");
+
+  const handleSignUp = () => {
+    SetLoginBoxState(false);
+    SetSignUpBoxState(true);
+  };
+
+  const handleClick = async () => {
+    try {
+      const response = await SignInFunction(usernameValue, passwordValue);
+      if (response.statusCode === 200) {
+        // console.log(response.token, "token");
+        SetCookie("JWTtoken", response.token);
+        console.log(cookie.name, "cookie");
+        router.push("/home");
+      } else if (response.statusCode === 403) {
+        alert("invalid credentials");
+      } else {
+        alert("user not found");
+      }
+    } catch (error) {
+      console.error("Sign-in failed:", error);
     }
   };
 
@@ -57,7 +80,9 @@ const SignIn = () => {
           <span className={Styles.signupwithemail}>Sign Up with Email</span>
         </div>
 
-        <Button className={ButtonStyles.signup}>Sign Up</Button>
+        <Button className={ButtonStyles.signup} onClick={handleSignUp}>
+          Sign Up
+        </Button>
       </div>
     </>
   );
