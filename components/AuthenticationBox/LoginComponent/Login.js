@@ -8,12 +8,14 @@ import { credential } from "../../../dummy/dummy";
 import { useLandingPageContext } from "@/contexts/LandingPageContext";
 import { useRouter } from "next/router";
 import { SignInFunction } from "@/services/AuthService/AuthService";
+import { useCookies } from "react-cookie";
 
 const SignIn = () => {
   const router = useRouter();
   const { SetLoginBoxState, SetSignUpBoxState } = useLandingPageContext();
   const [usernameValue, SetusernameValue] = useState("");
   const [passwordValue, SetpasswordValue] = useState("");
+  const [cookie, SetCookie] = useCookies("");
 
   const { username, password } = credential;
 
@@ -25,7 +27,16 @@ const SignIn = () => {
   const handleClick = async () => {
     try {
       const response = await SignInFunction(usernameValue, passwordValue);
-      console.log("Sign-in successful:", response);
+      if (response.statusCode === 200) {
+        // console.log(response.token, "token");
+        SetCookie("JWTtoken", response.token);
+        console.log(cookie.name, "cookie");
+        router.push("/home");
+      } else if (response.statusCode === 403) {
+        alert("invalid credentials");
+      } else {
+        alert("user not found");
+      }
     } catch (error) {
       console.error("Sign-in failed:", error);
     }
