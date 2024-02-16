@@ -17,9 +17,9 @@ const LandingPage = () => {
       <div className={Styles.logosandAuthboxContainer}>
         <Image className={Styles.logo} src={logo} alt="logo" />
         <div className={Styles.doogos}>Sign in to Doggos</div>
-        {/* <Login /> */}
+        <Login />
         {/* <SignUpPage /> */}
-        <UserLogo />
+        {/* <UserLogo /> */}
       </div>
     </div>
   );
