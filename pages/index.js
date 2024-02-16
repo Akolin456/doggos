@@ -1,6 +1,6 @@
 import LandingPage from "@/components/LandingPageComponents/LandingPageComponents";
-const HomePage = () => {
+const RootPage = () => {
   return <LandingPage />;
 };
 
-export default HomePage;
+export default RootPage;

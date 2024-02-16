@@ -1,9 +1,9 @@
-.Login{
+.Login {
   color: white;
   height: 260px;
   width: 330px;
   background-color: #0000004a;
-  
+
   border-radius: 10px;
   border-width: 1px;
   border-color: white;
@@ -11,26 +11,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
- justify-content: space-around;
- padding-top: 20px;
-
-} 
-.forgotpasswordcontainer{
-    display: flex;
-    width: 80%;
-    justify-content: flex-end;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+.forgotpasswordcontainer {
+  display: flex;
+  width: 80%;
+  justify-content: flex-end;
 }
 
-.usernamecontainer{
-  margin-right:124px;
+.usernamecontainer {
+  margin-right: 124px;
 }
 
-
-.passwordcontainer{
-  margin-right:226px;
+.passwordcontainer {
+  margin-right: 226px;
 }
 
-.signupcontainer{
+.signupcontainer {
+  background-color: #0000004a;
   color: white;
   border-radius: 5px;
   border-width: 1px;
@@ -43,12 +42,3 @@
   align-items: center;
   gap: 5px;
 }
-
-
-
-
-
-
-
-
-
