@@ -21,21 +21,23 @@ const SignUpPage = () => {
   return (
     <>
       <div className={Styles.signupcontainer}>
-        <div className={Styles.firstnamecontainer}>Enter Your First Name</div>
+        <div className={Styles.namecontainer}>Enter Your Name</div>
         <Input className={InputStyles.userinput} type="text" />
-        <div className={Styles.lastnamecontainer}>Enter Your Last Name</div>
+        <div className={Styles.emailcontainer}>Enter Your Email Address</div>
         <Input className={InputStyles.userinput} type="text" />
 
         <div className={Styles.passwordcontainer}>Password </div>
         <Input className={InputStyles.userinput} type="text" />
         <div className={Styles.confirmpasswordcontainer}>Confirm Password </div>
         <Input className={InputStyles.userinput} type="text" />
-        <Button className={ButtonStyles.submit} onClick={handleSubmit}>
-          Submit
-        </Button>
-        <Button className={ButtonStyles.cancel} onClick={handleCancel}>
-          Cancel
-        </Button>
+        <div className={Styles.submitcancelbottoncontainer}>
+          <Button className={ButtonStyles.submit} onClick={handleSubmit}>
+            Submit
+          </Button>
+          <Button className={ButtonStyles.cancel} onClick={handleCancel}>
+            Cancel
+          </Button>
+        </div>
       </div>
     </>
   );

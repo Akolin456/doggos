@@ -1,25 +1,28 @@
 .signupcontainer{
     border-style: solid;
     width: 325px;
+    height: 330px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
+    border-width: 2px;
     border-color: white;
     gap: 6px;
 }
 
 
-.firstnamecontainer{
+.namecontainer{
     color: white;
-    margin-right: 144px;
+    margin-right: 170px;
+    margin-top: 13px;
 }
 
 
-.lastnamecontainer{
+.emailcontainer{
     color: white;
-    margin-right: 144px;
+    margin-right: 122px;
 }
 
 
@@ -32,4 +35,13 @@
 .confirmpasswordcontainer{
     color: white;
     margin-right: 171px;
+}
+
+ .submitcancelbottoncontainer{
+    width: 185px;
+    display: flex;
+    flex-direction:row-reverse;
+    gap :50px;
+    
+    /* justify-content: space-between; */
 }

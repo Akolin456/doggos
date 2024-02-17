@@ -2,7 +2,11 @@
   "editor.formatOnSave": true,
   "gitflow4code.features": [
     {
-      "name": "feature/Gunarnab-SignUpFlow",
+      "name": "feature/Sumit-SignUp_Static_page_CSS",
+      "base": "develop"
+    },
+    {
+      "name": "feature/sumit-landingpagecssfix",
       "base": "develop"
     }
   ]

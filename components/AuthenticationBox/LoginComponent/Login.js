@@ -65,6 +65,11 @@ const SignIn = () => {
           }}
           value={passwordValue}
         />
+
+        <div className={Styles.rememberme}>
+          Remember me
+          <Input className={InputStyles.rememberme} type="checkbox" />
+        </div>
         <div className={Styles.forgotpasswordcontainer}>
           <div className={Styles.forgotpassword}>forgot password</div>
         </div>

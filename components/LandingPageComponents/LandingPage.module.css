@@ -12,14 +12,10 @@
 }
 
 .textcontainer {
-  /* display: flex;
-    flex-direction: column;
-    height: 100px;
-    justify-content: space-between;
-    margin-bottom: 120px; */
+ 
   display: flex;
   flex-direction: column-reverse;
-  height: 100px;
+  height: 133px;
   margin-top: 603px;
   align-items: center;
   justify-content: space-evenly;
