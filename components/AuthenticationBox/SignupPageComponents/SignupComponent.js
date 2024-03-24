@@ -33,6 +33,8 @@ const SignUpComponent = () => {
             alert("signup successful");
             SetSignUpBoxState(false);
             SetUserLogoBoxState(true);
+          } else if (response.statusCode === 500) {
+            alert("account already exists");
           }
         } catch (error) {
           alert("error in signup", error);

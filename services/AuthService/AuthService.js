@@ -75,22 +75,56 @@ export async function SignInFunction(email, password) {
  * @return {Promise<void>}
  */
 export async function SignUp(email, password) {
-  const payLoad = JSON.stringify({
+  Log(`Sign In called for ${email} ${password}`);
+  /*
+      Expected Payload
+      {
+      "userId":"test",
+      "password":"test"
+      }
+      Response Structure :
+      {"msg":"USER SERVICE : Generated JWT Token with userId as Claim","data":"Generated Token"}
+      Status Code meanings :
+      200 :- Generated JWT Token successfully
+      403 :- Invalid Credentials
+      404 :- User not found
+      400 :- Invalid Payload
+      500 :- Something is Wrong in the Backend
+       */
+
+  // Prepare the payload
+  const payload = JSON.stringify({
     userId: email,
     password: password,
   });
+
+  Log(`Payload is ${payload}`);
+
+  // Call User Service with a timeout of 30 seconds
   const resp = await fetchWithTimeout(userServiceUrl, {
     method: "PUT",
     headers: {
-      "CONTENT-TYPE": "APPLICATION/json",
+      "Content-Type": "application/json",
     },
-    body: payLoad,
+    body: payload,
   });
+
+  // Throw exception conditionally if status code is not 200
   if (resp.status !== 200) {
-    throw new Error(
-      `status code was ${resp.status} and body is ${resp.body.toString()}`
-    );
+    Log(`Response Status Code is not 200. It's ${resp.status}`);
+
+    return {
+      statusCode: resp.status,
+    };
   }
+
+  const respBody = await resp.json();
+  Log(`Response Body Dict is ${respBody}`);
+  const token = respBody.data;
+  return {
+    statusCode: 200,
+    token: token,
+  };
 }
 
 async function fetchWithTimeout(url, options, timeout = 30000) {
