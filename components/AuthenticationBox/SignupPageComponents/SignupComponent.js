@@ -61,7 +61,6 @@ const SignUpComponent = () => {
           value={userNameValue}
           type="text"
         />
-
         <div className={Styles.passwordcontainer}>Password </div>
         <Input
           className={InputStyles.userinput}
