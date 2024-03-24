@@ -1,6 +1,6 @@
-import LandingPage from "@/components/LandingPageComponents/LandingPageComponents";
+import LandingPageComponent from "@/components/LandingPageComponents/LandingPageComponent";
 const RootPage = () => {
-  return <LandingPage />;
+  return <LandingPageComponent />;
 };
 
 export default RootPage;

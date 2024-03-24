@@ -18,6 +18,8 @@ const SignIn = () => {
   const [cookie, SetCookie] = useCookies("");
 
   const { username, password } = credential;
+  const newtoDoggos = "New to Doggos? ";
+  const signupwithEmail = "Sign Up with Email";
 
   const handleSignUp = () => {
     SetLoginBoxState(false);
@@ -66,7 +68,7 @@ const SignIn = () => {
           value={passwordValue}
         />
         <div className={Styles.forgotpasswordcontainer}>
-          <div className={Styles.forgotpassword}>forgot password</div>
+          <div className={Styles.forgotpassword}>Forgot Password</div>
         </div>
 
         <Button onClick={handleClick} className={ButtonStyles.login}>
@@ -75,9 +77,8 @@ const SignIn = () => {
       </div>
       <div className={Styles.signupcontainer}>
         <div className={Styles.signup}>
-          {" "}
-          New to Doggos?{" "}
-          <span className={Styles.signupwithemail}>Sign Up with Email</span>
+          {newtoDoggos}
+          <span className={Styles.signupwithemail}>{signupwithEmail}</span>
         </div>
 
         <Button className={ButtonStyles.signup} onClick={handleSignUp}>

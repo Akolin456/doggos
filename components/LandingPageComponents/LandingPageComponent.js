@@ -1,12 +1,13 @@
 import Login from "../AuthenticationBox/LoginComponent/Login";
-import Styles from "./LandingPage.module.css";
+import Styles from "./LandingPageComponent.module.css";
 import Image from "next/image";
 import logo from "../../public/Assets/OSicon.png";
-import SignUpPage from "../SignupPageComponents/SignupPageComponents";
+
 import UserLogo from "../UserLogoComponemts/UserLogoComponents";
 import { useLandingPageContext } from "@/contexts/LandingPageContext";
+import SignUpComponent from "../AuthenticationBox/SignupPageComponents/SignupComponent";
 
-const LandingPage = () => {
+const LandingPageComponent = () => {
   const { loginBoxState, signupBoxState, userLogoBoxState } =
     useLandingPageContext();
   return (
@@ -23,11 +24,11 @@ const LandingPage = () => {
         <div className={Styles.doogos}>Sign in to Doggos</div>
 
         {(loginBoxState && <Login />) ||
-          (signupBoxState && <SignUpPage />) ||
+          (signupBoxState && <SignUpComponent />) ||
           (userLogoBoxState && <UserLogo />)}
       </div>
     </div>
   );
 };
 
-export default LandingPage;
+export default LandingPageComponent;
