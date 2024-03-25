@@ -7,6 +7,7 @@ const HomePage = () => {
   return (
     <div>
       <HomeComponent />
+      <div>hi</div>
     </div>
   );
 };
