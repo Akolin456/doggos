@@ -4,6 +4,10 @@
     {
       "name": "feature/Gunarnab-SignUpFlow",
       "base": "develop"
+    },
+    {
+      "name": "feature/Sumit-Homepage",
+      "base": "develop"
     }
   ]
 }
