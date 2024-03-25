@@ -1,3 +1,9 @@
 {
-    "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "gitflow4code.features": [
+    {
+      "name": "feature/Gunarnab-SignUpFlow",
+      "base": "develop"
+    }
+  ]
 }

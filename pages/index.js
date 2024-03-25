@@ -1,6 +1,6 @@
-import LoginPage from "@/components/LoginPageComponents/LoginPageComponents";
-const HomePage = () => {
-  return <LoginPage />;
+import LandingPageComponent from "@/components/LandingPageComponents/LandingPageComponent";
+const RootPage = () => {
+  return <LandingPageComponent />;
 };
 
-export default HomePage;
+export default RootPage;
