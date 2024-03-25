@@ -4,12 +4,7 @@ import HomeComponent from "@/components/HomePageComponents/HomeComponent/HomeCom
 const HomePage = () => {
   const [cookie] = useCookies(["JWTtoken"]);
   console.log(cookie.name, "homepage cookie");
-  return (
-    <div>
-      <HomeComponent />
-      <div>hi</div>
-    </div>
-  );
+  return <HomeComponent />;
 };
 
 export default HomePage;
