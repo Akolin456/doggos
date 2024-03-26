@@ -39,44 +39,54 @@ const Array = [
 ];
 
 const Menu = () => {
-  const { filteredArray, SetfilteredArray } = useHomePageContext();
+  const { filteredArray, SetfilteredArray, menuState, SetmenuState } =
+    useHomePageContext();
 
   useEffect(() => {
     SetfilteredArray(Array);
   }, []);
 
-  return (
-    <div className={Styles.menuContainer}>
-      <div className={Styles.menuTop}>
-        <div className={Styles.navigationIconsAndSearch}>
-          <Image src={BackIcon} />
-          <Search />
-          <Image src={BacktoSignIn} />
+  const handleBack = () => {
+    SetmenuState(false);
+  };
+
+  if (menuState)
+    return (
+      <div className={Styles.menuContainer}>
+        <div className={Styles.menuTop}>
+          <div className={Styles.navigationIconsAndSearch}>
+            <Image
+              style={{ cursor: "pointer" }}
+              src={BackIcon}
+              onClick={handleBack}
+            />
+            <Search />
+            <Image src={BacktoSignIn} style={{ cursor: "pointer" }} />
+          </div>
+          <div className={Styles.searchDescription}>
+            Trying to find something?
+          </div>
         </div>
-        <div className={Styles.searchDescription}>
-          Trying to find something?
+        <div className={Styles.menuIconsContainer}>
+          <div className={Styles.menuIcons}>
+            {filteredArray && filteredArray.length === 0 ? (
+              <div className={Styles.simmer}>No icons as per your search</div>
+            ) : (
+              filteredArray.map((event) => (
+                <div className={Styles.menuIconContainer} key={event.name}>
+                  <Image
+                    style={{ height: "150px", width: "150px" }}
+                    src={event.object}
+                    alt={event.name}
+                  />
+                  <div className={Styles.iconName}>{event.name}</div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
-      <div className={Styles.menuIconsContainer}>
-        <div className={Styles.menuIcons}>
-          {filteredArray && filteredArray.length === 0 ? (
-            <div className={Styles.simmer}>No icons as per your search</div>
-          ) : (
-            filteredArray.map((event) => (
-              <div className={Styles.menuIconContainer} key={event.name}>
-                <Image
-                  style={{ height: "150px", width: "150px" }}
-                  src={event.object}
-                  alt={event.name}
-                />
-                <div className={Styles.iconName}>{event.name}</div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 export { Array };
 export default Menu;

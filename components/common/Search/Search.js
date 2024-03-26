@@ -3,8 +3,7 @@ import Image from "next/image";
 import SearchIcon from "../../../public/Assets/SearchIcon.png";
 import { useHomePageContext } from "@/contexts/HomePageContext";
 import { filterData } from "../Filter/Filter";
-import { Array } from "@/components/HomePageComponents/Modal/Menu";
-// import { useHomePageContext } from "@/contexts/HomePageContext";
+import { Array } from "@/components/HomePageComponents/Menu/Menu";
 
 const Search = () => {
   const { SetfilteredArray } = useHomePageContext();
