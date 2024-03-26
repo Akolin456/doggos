@@ -15,6 +15,11 @@ let verboseLog = true;
  * @param password Password of the user Logging in
  * @return JWT Token of the user. Will throw exception upon failure
  */
+
+export function SignOut() {
+  document.cookie = "JWTtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
 export async function SignInFunction(email, password) {
   Log(`Sign In called for ${email} ${password}`);
   /*

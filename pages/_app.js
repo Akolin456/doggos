@@ -1,10 +1,13 @@
 import "@/styles/globals.css";
 import { LandingPageContextProvider } from "@/contexts/LandingPageContext";
+import { HomePageContextProvider } from "@/contexts/HomePageContext";
 
 export default function App({ Component, pageProps }) {
   return (
-    <LandingPageContextProvider>
-      <Component {...pageProps} />
-    </LandingPageContextProvider>
+    <HomePageContextProvider>
+      <LandingPageContextProvider>
+        <Component {...pageProps} />
+      </LandingPageContextProvider>
+    </HomePageContextProvider>
   );
 }
