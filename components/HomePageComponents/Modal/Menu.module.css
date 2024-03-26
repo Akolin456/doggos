@@ -1,9 +1,0 @@
-.menuContainer {
-  background-color: rgba(0, 0, 0, 0.294);
-  position: fixed;
-  backdrop-filter: blur(2.5px);
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
