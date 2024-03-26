@@ -18,6 +18,8 @@ import Music from "../../../public/Assets/Music.png";
 import Notepad from "../../../public/Assets/Notepad.png";
 import Omega from "../../../public/Assets/omega-circle.png";
 import { useEffect } from "react";
+import { SignOut } from "../../../services/AuthService/AuthService";
+import { useRouter } from "next/router";
 
 import { useHomePageContext } from "@/contexts/HomePageContext";
 
@@ -39,6 +41,8 @@ const Array = [
 ];
 
 const Menu = () => {
+  const router = useRouter();
+
   const { filteredArray, SetfilteredArray, menuState, SetmenuState } =
     useHomePageContext();
 
@@ -48,6 +52,12 @@ const Menu = () => {
 
   const handleBack = () => {
     SetmenuState(false);
+  };
+
+  const handleSignOut = () => {
+    SignOut();
+    SetmenuState(false);
+    router.push("/");
   };
 
   if (menuState)
@@ -61,7 +71,11 @@ const Menu = () => {
               onClick={handleBack}
             />
             <Search />
-            <Image src={BacktoSignIn} style={{ cursor: "pointer" }} />
+            <Image
+              src={BacktoSignIn}
+              style={{ cursor: "pointer" }}
+              onClick={handleSignOut}
+            />
           </div>
           <div className={Styles.searchDescription}>
             Trying to find something?
