@@ -1,9 +1,9 @@
 import Styles from "./test.module.css";
-import Menu from "@/components/HomePageComponents/Menu/Menu";
+import ImageViewer from "@/components/common/ImageViewer/ImageViewer";
 const Test = () => {
   return (
     <div className={Styles.testContainer}>
-      <Menu />
+      <ImageViewer />
     </div>
   );
 };
