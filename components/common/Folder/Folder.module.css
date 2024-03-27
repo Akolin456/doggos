@@ -1,49 +1,131 @@
-.FolderComponents{
-    border-radius: 1px;
-    border-style: solid;
-    border-color: white;
-    height: 100vh;
+.folderBackground {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.201);
+  /* background: transparent; */
 }
+.navBar {
+  width: 100%;
+  height: 60px;
+  background: transparent;
 
-.viewfolder{
-    border-radius: 4px;
-    border-style: solid;
-    
-    border-color: white;
-    width: auto;
-    margin-left: 3px;
-    margin-right: 3px;
-    margin-top: 3px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2%;
-    background-color: #808080d4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.FileManagerIcon{
-    height: 30px;
-    width: 30px;
-    margin-left: 3px;
+.folderNameContainer {
+  height: 60px;
+  width: 300px;
+
+  background-color: rgba(146, 146, 146, 0.738);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
-.iconName{
-    color: white;
+.folderName {
+  color: white;
+  font-size: 1.2em;
 }
-.documentpath{
-    border-radius: 4px;
-    border-style: solid;
-    border-color: white;
-    width: 700px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 7%;
-    margin-left: 324px;
-    background-color:#808080d4 ;
+.navigation {
+  height: 60px;
+  width: 190px;
+
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
-.documentpathicon{
-    height: 28px;
-    width: 28px;
+.folderPathAndNavigation {
+  width: 100%;
+  height: 60px;
+  /* background: transparent; */
+  background-color: rgba(146, 146, 146, 0.738);
+  /* border-style: solid;
+  border-color: white;
+  border-width: 1px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
-.documentspathname{
-    color: white;
+.folderNavigation {
+  width: 300px;
+  /* border-style: solid;
+  border-color: white;
+  border-width: 1px; */
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.path {
+  width: 950px;
+  /* border-style: solid;
+  border-color: white; */
+  background-color: rgb(255 255 255 / 41%);
+  /* border-width: 1px; */
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+.searchInFolder {
+  width: 635px;
+  /* border-style: solid;
+  border-color: white;
+  border-width: 1px; */
+  background-color: rgb(255 255 255 / 41%);
+  height: 60px;
+  height: 45px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.body {
+  background-color: black;
+  height: 754px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.inFolderNavigations {
+  width: 300px;
+  border-right: 1px solid white;
+}
+.infolderNameContainer {
+  height: 50px;
+  width: 299px;
+
+  background-color: rgba(146, 146, 146, 0.738);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.mainBody {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.folderIconsContainer {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
 }
