@@ -8,6 +8,10 @@
     {
       "name": "feature/Gunarnab-Menu",
       "base": "develop"
+    },
+    {
+      "name": "feature/Sumit-Folder",
+      "base": "feature/Sumit-Homepage"
     }
   ]
 }

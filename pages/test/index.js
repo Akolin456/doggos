@@ -1,9 +1,11 @@
 import Styles from "./test.module.css";
-import ImageViewer from "@/components/common/ImageViewer/ImageViewer";
+import Menu from "@/components/HomePageComponents/Menu/Menu";
+import Folder from "@/components/common/Folder/Folder.Components";
 const Test = () => {
   return (
     <div className={Styles.testContainer}>
-      <ImageViewer />
+      {/* <Menu /> */}
+      <Folder />
     </div>
   );
 };
