@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  
 }
 .menubar {
   height: 51px;
@@ -23,6 +24,7 @@
   align-items: center;
   justify-content: space-around;
   margin-bottom: 5px;
+  position: fixed;
 }
 .menubariconcointainer {
   /* background-color: #c48f8f63; */
@@ -37,6 +39,7 @@
 
 .RecycleBin {
   width: 36px;
+  
 }
 .FileManagerIcon {
   height: 30px;

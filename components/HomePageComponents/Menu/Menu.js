@@ -9,7 +9,7 @@ import Calendar from "../../../public/Assets/calendar.png";
 import Clock from "../../../public/Assets/Clock.png";
 import File from "../../../public/Assets/File.png";
 import Hentai from "../../../public/Assets/Hentai.png";
-import ImageViewer from "../../../public/Assets/Image.png";
+import ImageViewer from "../../../public/Assets/Hentai.png";
 import Jav from "../../../public/Assets/JAVIcon.png";
 import Map from "../../../public/Assets/Map.png";
 import MediaPlayer from "../../../public/Assets/MediaPlayer.png";
