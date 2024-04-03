@@ -8,12 +8,17 @@ import Settings from "../../../public/Assets/Settings.png";
 import Image from "next/image";
 import Menu from "../Menu/Menu";
 import { useHomePageContext } from "@/contexts/HomePageContext";
+import Folder from "@/components/common/Folder/Folder";
+import ImageViewer from "@/components/common/ImageViewer/ImageViewer";
 
 const HomePage = () => {
-  const { SetmenuState } = useHomePageContext();
+  const { SetmenuState, SetfolderState } = useHomePageContext();
 
   const handleMenuClick = () => {
     SetmenuState(true);
+  };
+  const handleFolderClick = () => {
+    SetfolderState(true);
   };
 
   const [cookie] = useCookies(["JWTtoken"]);
@@ -21,6 +26,8 @@ const HomePage = () => {
   console.log(cookie.name, "homepage cookie");
   return (
     <div className={Styles.HomePage}>
+      <Folder />
+      <ImageViewer />
       <Menu />
       <div className={Styles.menubar}>
         <Image
@@ -57,6 +64,7 @@ const HomePage = () => {
             e.target.style.backgroundColor = "#c48f8f63";
             e.target.style.background = "transparent";
           }}
+          onClick={handleFolderClick}
         />
 
         <Image

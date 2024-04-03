@@ -9,7 +9,7 @@ import Calendar from "../../../public/Assets/calendar.png";
 import Clock from "../../../public/Assets/Clock.png";
 import File from "../../../public/Assets/File.png";
 import Hentai from "../../../public/Assets/Hentai.png";
-import IImage from "../../../public/Assets/Image.png";
+import ImageViewer from "../../../public/Assets/Hentai.png";
 import Jav from "../../../public/Assets/JAVIcon.png";
 import Map from "../../../public/Assets/Map.png";
 import MediaPlayer from "../../../public/Assets/MediaPlayer.png";
@@ -17,6 +17,7 @@ import MenuSettings from "../../../public/Assets/MenuSettings.png";
 import Music from "../../../public/Assets/Music.png";
 import Notepad from "../../../public/Assets/Notepad.png";
 import Omega from "../../../public/Assets/omega-circle.png";
+import PornHub from "../../../public/Assets/PornHub.png";
 import { useEffect } from "react";
 import { SignOut } from "../../../services/AuthService/AuthService";
 import { useRouter } from "next/router";
@@ -30,7 +31,7 @@ const Array = [
   { name: "Clock", object: Clock },
   { name: "File", object: File },
   { name: "Hentai", object: Hentai },
-  { name: "IImage", object: IImage },
+  { name: "ImageViewer", object: ImageViewer },
   { name: "Jav", object: Jav },
   { name: "Map", object: Map },
   { name: "MenuSettings", object: MenuSettings },
@@ -38,6 +39,7 @@ const Array = [
   { name: "Music", object: Music },
   { name: "Notepad", object: Notepad },
   { name: "Omega", object: Omega },
+  { name: "PornHub", object: PornHub },
 ];
 
 const Menu = () => {
