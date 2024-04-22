@@ -4,7 +4,7 @@ import Styles from "./Login.module.css";
 import Input from "../../common/Input/Input";
 import InputStyles from "../../common/Input/Input.module.css";
 import { useState } from "react";
-import { credential } from "../../../dummy/dummy";
+
 import { useLandingPageContext } from "@/contexts/LandingPageContext";
 import { useRouter } from "next/router";
 import { SignInFunction } from "@/services/AuthService/AuthService";
@@ -17,7 +17,6 @@ const SignIn = () => {
   const [passwordValue, SetpasswordValue] = useState("");
   const [cookie, SetCookie] = useCookies("");
 
-  const { username, password } = credential;
   const newtoDoggos = "New to Doggos? ";
   const signupwithEmail = "Sign Up with Email";
 

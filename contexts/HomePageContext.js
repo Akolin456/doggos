@@ -10,6 +10,7 @@ export const HomePageContextProvider = ({ children }) => {
   const [imageViewerState, SetimageViewerState] = useState(false);
   const [imageObj, SetimageObj] = useState();
   const [imageName, SetImageName] = useState();
+
   return (
     <HomePageContext.Provider
       value={{
