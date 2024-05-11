@@ -3,7 +3,7 @@ import HomeComponent from "@/components/HomePageComponents/HomeComponent/HomeCom
 
 const HomePage = () => {
   const [cookie] = useCookies(["JWTtoken"]);
-  console.log(cookie.name, "homepage cookie");
+  // console.log(cookie.name, "homepage cookie");
   return <HomeComponent />;
 };
 

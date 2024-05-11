@@ -23,7 +23,7 @@ const HomePage = () => {
 
   const [cookie] = useCookies(["JWTtoken"]);
 
-  console.log(cookie.name, "homepage cookie");
+  // console.log(cookie.name, "homepage cookie");
   return (
     <div className={Styles.HomePage}>
       <Folder />
