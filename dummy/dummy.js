@@ -5,15 +5,23 @@ export const newkindofobj = {
     type: "folder",
     DOM: "05/02/2002",
     Children: {
-      xyz: {
-        name: "xyz",
+      Home: {
+        name: "Home",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
-        Children: {},
+        Children: {
+          Home3: {
+            name: "Home3",
+            size: "1.65mb",
+            type: "folder",
+            DOM: "05/02/2002",
+            Children: {},
+          },
+        },
       },
-      captures: {
-        name: "captures",
+      Home2: {
+        name: "Home2",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
@@ -27,22 +35,22 @@ export const newkindofobj = {
     type: "folder",
     DOM: "05/02/2002",
     Children: {
-      xyz: {
-        name: "xyz",
+      Desktop1: {
+        name: "Desktop1",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures: {
-        name: "captures",
+      Desktop2: {
+        name: "Desktop2",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures1: {
-        name: "captures1",
+      Desktop3: {
+        name: "Desktop3",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
@@ -56,15 +64,15 @@ export const newkindofobj = {
     type: "folder",
     DOM: "05/02/2002",
     Children: {
-      xyz: {
-        name: "xyz",
+      Downloads1: {
+        name: "Downloads1",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures: {
-        name: "captures",
+      Downloads2: {
+        name: "Downloads2",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
@@ -78,22 +86,22 @@ export const newkindofobj = {
     type: "folder",
     DOM: "05/02/2002",
     Children: {
-      xyz: {
-        name: "xyz",
+      Documents1: {
+        name: "Documents1",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures: {
-        name: "captures",
+      Documents2: {
+        name: "Documents2",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures1: {
-        name: "captures1",
+      Documents3: {
+        name: "Documents3",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
@@ -107,15 +115,15 @@ export const newkindofobj = {
     type: "folder",
     DOM: "05/02/2002",
     Children: {
-      xyz: {
-        name: "xyz",
+      Pictures1: {
+        name: "Pictures1",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures: {
-        name: "captures",
+      Pictures2: {
+        name: "Pictures2",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
@@ -130,22 +138,22 @@ export const newkindofobj = {
     type: "folder",
     DOM: "05/02/2002",
     Children: {
-      xyz: {
-        name: "xyz",
+      Music1: {
+        name: "Music1",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures: {
-        name: "captures",
+      Music2: {
+        name: "Music2",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures1: {
-        name: "captures1",
+      Music3: {
+        name: "Music3",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
@@ -159,15 +167,15 @@ export const newkindofobj = {
     type: "folder",
     DOM: "05/02/2002",
     Children: {
-      xyz: {
-        name: "xyz",
+      Videos1: {
+        name: "Videos1",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
         Children: {},
       },
-      captures: {
-        name: "captures",
+      Videos2: {
+        name: "Videos2",
         size: "1.65mb",
         type: "folder",
         DOM: "05/02/2002",
