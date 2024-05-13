@@ -15,11 +15,6 @@ let verboseLog = true;
  * @param password Password of the user Logging in
  * @return JWT Token of the user. Will throw exception upon failure
  */
-
-export function SignOut() {
-  document.cookie = "JWTtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
-
 export async function SignInFunction(email, password) {
   Log(`Sign In called for ${email} ${password}`);
   /*
@@ -130,6 +125,51 @@ export async function SignUp(email, password) {
     statusCode: 200,
     token: token,
   };
+}
+
+/**
+ * Get directory contents based on the provided path.
+ * @param {string} path The path for which directory contents are requested.
+ * @returns {Promise<object>} A Promise that resolves to the directory contents.
+ */
+export async function getDirectory(path) {
+    Log(`Getting directory for path: ${path}`);
+
+    // Prepare the payload
+    const payload = JSON.stringify({
+        action: "Directory.GetDirectory",
+        path: [path],
+    });
+
+    Log(`Payload is ${payload}`);
+
+    try {
+        // Call the directory service with a timeout of 30 seconds
+        const resp = await fetchWithTimeout("https://pow5vvmrk6xkspj63ypuuxvttm0xzmwc.lambda-url.ap-south-1.on.aws/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: payload,
+        });
+
+        // Throw exception conditionally if status code is not 200
+        if (resp.status !== 200) {
+            Log(`Response Status Code is not 200. It's ${resp.status}`);
+            return {
+                statusCode: resp.status,
+            };
+        }
+
+        // Parse response body as JSON
+        const respBody = await resp.json();
+        Log(`Response Body is ${JSON.stringify(respBody)}`);
+
+        return respBody;
+    } catch (error) {
+        Log(`Error occurred: ${error.message}`);
+        throw error;
+    }
 }
 
 async function fetchWithTimeout(url, options, timeout = 30000) {
