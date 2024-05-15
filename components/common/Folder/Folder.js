@@ -164,24 +164,6 @@ const Folder = () => {
             </div>
             <div className={Styles.MediaPlayer}>Videos</div>
           </div>
-          {/* <div className={Styles.inFolderNavigations}>
-            <div className={Styles.infolderNameContainer}>
-              <Image src={File} height={30} width={35} />
-              <div className={Styles.folderName}>Documents</div>
-            </div>
-          </div> */}
-          {/* <div className={Styles.mainBody}>
-            {imageArray.map((image) => (
-              <div
-                className={Styles.folderIconsContainer}
-                style={{ cursor: "pointer" }}
-                onClick={() => handleImageClick(image.object, image.name)}
-              >
-                <Image src={image.object} height={50} width={70} />
-                <div className={Styles.folderName}>{image.name}</div>
-              </div>
-            ))}
-          </div> */}
         </div>
       </div>
     );
