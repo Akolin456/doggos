@@ -1,5 +1,5 @@
 import Styles from "./Folder.module.css";
-// import FileManagerIcon from "../../../public/Assets/FileManagerIcon.png";
+
 import MyPC from "../../../public/Assets/MyPC.png";
 import File from "../../../public/Assets/FileManagerIcon.png";
 import Exit from "../../../public/Assets/Exit.png";
@@ -27,7 +27,10 @@ import MediaPlayer from "../../../public/Assets/MediaPlayer.png";
 import Image from "next/image";
 import { useHomePageContext } from "@/contexts/HomePageContext";
 import { useEffect, useState } from "react";
-import { newkindofobj } from "../../../dummy/dummy";
+
+import { getDirectory } from "../../../services/AuthService/AuthService";
+import Input from "../Input/Input";
+import Button from "../Button/Button";
 
 const Folder = () => {
   const categoriesFolderArray = [
@@ -48,30 +51,39 @@ const Folder = () => {
   });
   const [selectedCategoryObjects, SetselectedCategoryObjects] = useState();
 
-  const [isBackButtonDisabled, SetisButtonDisabled] = useState(false);
+  const [responseDataobj, SetresponseDataobj] = useState({});
+
+  const [backFolderCache, SetbackFolderCache] = useState([]);
+  const [folderCreateDropdownState, SetFolderCreateDropdownState] =
+    useState(false);
 
   useEffect(() => {
-    handleGetChildren(selectedCategory.name);
+    const initialGetData = async () => {
+      const response = await getDirectory(selectedCategory.name);
+      handleGetChildrenforCategory(selectedCategory.name, response["data"]);
+      SetresponseDataobj(response["data"]);
+    };
+    initialGetData();
   }, [selectedCategory]);
 
-  const handleGetChildren = (name) => {
-    if (!newkindofobj[name]) return;
-    const selectedObj1 = Object.values(newkindofobj[name].Children);
+  const handleGetChildrenforCategory = (name, obj) => {
+    // console.log(obj[name], "handegetchildrent for category");
+    if (!obj[name]) return;
+    const selectedObj1 = Object.values(obj[name].children);
 
     SetselectedCategoryObjects(selectedObj1);
   };
 
   const handleFolderClick = (name) => {
-    console.log(pathArray, "folderClick");
     pathArray.push(name);
     setpathArray(pathArray);
-    let childObj = newkindofobj;
+    let childObj = responseDataobj;
     pathArray.map((a, i) => {
-      console.log(childObj, pathArray, "childobj");
+      // console.log(childObj, pathArray, "childobj");
       if (i !== 0) {
-        childObj = childObj[a].Children;
+        childObj = childObj[a].children;
       } else {
-        childObj = childObj[a].Children;
+        childObj = childObj[a].children;
       }
     });
     const childArray = [];
@@ -80,32 +92,64 @@ const Folder = () => {
     });
     SetselectedCategoryObjects(childArray);
   };
-  const handleCategorySelect = ({ object, name }) => {
-    handleGetChildren(name);
+  const handleCategorySelect = async ({ object, name }) => {
+    const response = await getDirectory(name);
+
+    console.log(response["data"], "checking object here");
+    handleGetChildrenforCategory(name, response["data"]);
+    SetresponseDataobj(response["data"]);
+    SetbackFolderCache([]);
     setpathArray([name]);
   };
   const handleBack = () => {
-    pathArray.pop();
+    const temp = pathArray.pop();
+    backFolderCache.push(temp);
+    SetbackFolderCache([...backFolderCache]);
+    console.log(backFolderCache, "checking cache");
     setpathArray([...pathArray]);
-    let childObj = newkindofobj;
+    let childObj = responseDataobj;
     pathArray.forEach((a, i) => {
-      console.log(childObj, pathArray, "childobj");
-      childObj = childObj[a].Children;
+      childObj = childObj[a].children;
     });
     const childArray = Object.values(childObj);
     SetselectedCategoryObjects(childArray);
 
     console.log(pathArray, "handleBack");
   };
+  const handlePrev = () => {
+    const temp = backFolderCache.pop();
+    pathArray.push(temp);
+    SetbackFolderCache([...backFolderCache]);
+
+    setpathArray([...pathArray]);
+    let childObj = responseDataobj;
+    pathArray.forEach((a, i) => {
+      childObj = childObj[a].children;
+    });
+    const childArray = Object.values(childObj);
+    SetselectedCategoryObjects(childArray);
+    console.log(backFolderCache);
+  };
 
   const handleExit = () => {
+    setpathArray(["Home"]);
+    SetbackFolderCache([]);
     SetfolderState(false);
     SetselectedCategory({
       object: Home,
       name: "Home",
     });
   };
-  console.log(pathArray, "patharray");
+
+  const handleDelete = (_id) => {};
+  const handleDropdownArrow = () => {
+    if (folderCreateDropdownState) {
+      SetFolderCreateDropdownState(false);
+    } else {
+      SetFolderCreateDropdownState(true);
+    }
+  };
+
   if (folderState)
     return (
       <div className={Styles.folderDirectory}>
@@ -143,7 +187,15 @@ const Folder = () => {
                 }}
                 onClick={handleBack}
               />
-              <Image src={Forward} />
+              <Image
+                src={Forward}
+                onClick={handlePrev}
+                style={{
+                  cursor: "pointer",
+                  pointerEvents: backFolderCache.length > 0 ? "auto" : "none",
+                  opacity: backFolderCache.length > 0 ? "1.3" : "0.3",
+                }}
+              />
               <Image src={ToDesktop} />
             </div>
             <div className={Styles.path}>
@@ -165,11 +217,23 @@ const Folder = () => {
             </div>
             <div className={Styles.Newicon}>New</div>
             <div className={Styles.ViewArrow}>
-              <Image src={ViewArrow} />
+              <Image
+                src={ViewArrow}
+                onClick={handleDropdownArrow}
+                style={{ cursor: "pointer" }}
+              />
+              {folderCreateDropdownState && (
+                <div className={Styles.createDirectoryDropdown}>
+                  <Input style={{ height: "50px", width: "200px" }} />
+                  <Button style={{ height: "50px", width: "100px" }}>
+                    Create Directory
+                  </Button>
+                </div>
+              )}
             </div>
 
             <div className={Styles.Line}></div>
-            <div className={Styles.Cuticon}>
+            {/* <div className={Styles.Cuticon}>
               <Image src={Cut} />
             </div>
             <div className={Styles.Copyicon}>
@@ -181,7 +245,7 @@ const Folder = () => {
             <div className={Styles.Deleteicon}>
               <Image src={Delete} />
             </div>
-            <div className={Styles.Line}></div>
+            <div className={Styles.Line}></div> */}
           </div>
           <div className={Styles.body}>
             <div className={Styles.inFolderNavigations}>
@@ -212,25 +276,31 @@ const Folder = () => {
                 {selectedCategoryObjects &&
                 selectedCategoryObjects.length > 0 ? (
                   selectedCategoryObjects.map(
-                    ({ name, size, type, dateModified }, index) => (
+                    ({ _id, size, type, DOM }, index) => (
                       <div
                         key={index}
                         style={{
                           display: "flex",
                           flexDirection: "row",
-                          cursor: "pointer",
+                          // cursor: "pointer",
                         }}
-                        onClick={() => handleFolderClick(name)}
                       >
-                        <div className={Styles.contentName}>
+                        <div
+                          className={Styles.contentName}
+                          onClick={() => handleFolderClick(_id)}
+                          style={{ cursor: "pointer" }}
+                        >
                           <Image src={File} height={30} width={30} alt="file" />
-                          {name}
+                          {_id}
                         </div>
                         <div className={Styles.contentSize}>{size}</div>
                         <div className={Styles.contentItemType}>{type}</div>
-                        <div className={Styles.contentDateModified}>
-                          {dateModified}
-                        </div>
+                        <div className={Styles.contentDateModified}>{DOM}</div>
+                        <Image
+                          src={Delete}
+                          onClick={handleDelete(_id)}
+                          style={{ cursor: "pointer" }}
+                        />
                       </div>
                     )
                   )
