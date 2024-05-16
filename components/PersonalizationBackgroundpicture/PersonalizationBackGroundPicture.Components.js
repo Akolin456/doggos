@@ -32,6 +32,7 @@ const PersonaalizationBackGroundPicture = () => {
       </div>
 
       <div className={Styles.BackgroundProfileMiddleware}>
+        <div className={Styles.Back}>Back</div>
         <div className={Styles.BackgroundProfileMiddlewareName}>
           Personalization - Background
         </div>

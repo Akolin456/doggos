@@ -31,6 +31,7 @@ const AppSetting = () => {
         </div>
       </div>
       <div className={Styles.AppSettingMiddleware}>
+        <div className={Styles.Back}>Back</div>
         <div className={Styles.AppSettingMiddlewareName}>APP</div>
         <div className={Styles.AllAppSettingMiddleware}>
           <div className={Styles.ManageApp}>Manage App</div>

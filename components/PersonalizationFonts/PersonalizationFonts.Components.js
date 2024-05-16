@@ -32,6 +32,7 @@ const PersonalizationFonts = () => {
       </div>
 
       <div className={Styles.PersonalizationFontsMiddleware}>
+        <div className={Styles.Back}>Back</div>
         <div className={Styles.PersonalizationFontsMiddlewareName}>
           Personalization - Fonts
         </div>

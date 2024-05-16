@@ -32,6 +32,7 @@ const AccountSecurity = () => {
       </div>
 
       <div className={Styles.AccountSecurityMiddleware}>
+        <div className={Styles.Back}>Back</div>
         <div className={Styles.AccountSecurityMiddlewareName}>
           Account - Security
         </div>

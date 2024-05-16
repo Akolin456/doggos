@@ -26,7 +26,7 @@ const Test = () => {
       {/* <TimeDate /> */}
       {/* <Calendar /> */}
       {/* <Clock /> */}
-      {/* <AccountProfile /> */}
+      <AccountProfile />
       {/* <AccountSecurity /> */}
       {/* <PersonaalizationBackGroundPicture /> */}
       {/* <PersonalizationFonts /> */}
