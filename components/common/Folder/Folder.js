@@ -28,7 +28,11 @@ import Image from "next/image";
 import { useHomePageContext } from "@/contexts/HomePageContext";
 import { useEffect, useState } from "react";
 
-import { getDirectory } from "../../../services/AuthService/AuthService";
+import {
+  getDirectory,
+  createFolder,
+  deleteFolder,
+} from "../../../services/AuthService/AuthService";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
@@ -56,6 +60,7 @@ const Folder = () => {
   const [backFolderCache, SetbackFolderCache] = useState([]);
   const [folderCreateDropdownState, SetFolderCreateDropdownState] =
     useState(false);
+  const [createFolderInput, SetCreateFolderInput] = useState("");
 
   useEffect(() => {
     const initialGetData = async () => {
@@ -141,13 +146,27 @@ const Folder = () => {
     });
   };
 
-  const handleDelete = (_id) => {};
+  const handleDelete = async (_id) => {
+    const response = await deleteFolder(pathArray[0], _id);
+    handleGetChildrenforCategory(pathArray[0], response["data"]);
+    SetresponseDataobj(response["data"]);
+    SetbackFolderCache([]);
+  };
   const handleDropdownArrow = () => {
     if (folderCreateDropdownState) {
       SetFolderCreateDropdownState(false);
     } else {
       SetFolderCreateDropdownState(true);
     }
+  };
+  const handleCreateDirectorybtn = async () => {
+    const response = await createFolder(pathArray[0], createFolderInput);
+    handleGetChildrenforCategory(pathArray[0], response["data"]);
+    SetresponseDataobj(response["data"]);
+    SetbackFolderCache([]);
+    SetFolderCreateDropdownState(false);
+    SetCreateFolderInput("");
+    // setpathArray([name]);
   };
 
   if (folderState)
@@ -224,8 +243,15 @@ const Folder = () => {
               />
               {folderCreateDropdownState && (
                 <div className={Styles.createDirectoryDropdown}>
-                  <Input style={{ height: "50px", width: "200px" }} />
-                  <Button style={{ height: "50px", width: "100px" }}>
+                  <Input
+                    style={{ height: "50px", width: "200px" }}
+                    value={createFolderInput}
+                    onChange={(e) => SetCreateFolderInput(e.target.value)}
+                  />
+                  <Button
+                    style={{ height: "50px", width: "100px" }}
+                    onClick={handleCreateDirectorybtn}
+                  >
                     Create Directory
                   </Button>
                 </div>
@@ -298,7 +324,7 @@ const Folder = () => {
                         <div className={Styles.contentDateModified}>{DOM}</div>
                         <Image
                           src={Delete}
-                          onClick={handleDelete(_id)}
+                          onClick={() => handleDelete(_id)}
                           style={{ cursor: "pointer" }}
                         />
                       </div>
