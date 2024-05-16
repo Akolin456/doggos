@@ -32,6 +32,8 @@ const AccountProfile = () => {
       </div>
 
       <div className={Styles.AccountProfileMiddleware}>
+        <div className={Styles.Back}>Back</div>
+
         <div className={Styles.AccountProfileMiddlewareName}>
           Account - Profile
         </div>

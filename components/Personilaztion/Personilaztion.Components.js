@@ -32,6 +32,7 @@ const Personilaztion = () => {
       </div>
 
       <div className={Styles.PersonilaztionMiddleware}>
+        <div className={Styles.Back}>Back</div>
         <div className={Styles.MiddlewareName}>Personilaztion</div>
 
         <div className={Styles.AllPersonilaztionMiddleware}>

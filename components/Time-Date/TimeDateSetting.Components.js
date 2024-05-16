@@ -31,6 +31,7 @@ const TimeDate = () => {
         </div>
       </div>
       <div className={Styles.TimeDateSettingMiddleware}>
+        <div className={Styles.Back}>Back</div>
         <div className={Styles.TimeDateSettingMiddlewareName}>Time/Date</div>
         <div className={Styles.AllTimeDateSettingMiddleware}>
           <div className={Styles.Clocks}>Clock</div>

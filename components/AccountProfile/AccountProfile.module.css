@@ -86,3 +86,13 @@
      font-size: 40px;
      background-color: rgba(146, 146, 146, 0.738);
 }
+
+.Back{
+    border-radius: 1px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    padding-left: 26px;
+    width: 86px;
+    margin-top: 5px;
+}
