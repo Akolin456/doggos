@@ -1,66 +1,36 @@
-.WholeAppSetting{
-   
-    height: 100vh; 
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.WholeAppSetting {
+  background-image: url(../../public/Assets/SettingsMainPage.png);
+  height: 100vh;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Backbtn {
+  margin-top: 100px;
+  margin-left: 100px;
+  color: white;
+  font-size: 1em;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgb(0, 0, 0); */
+  border: 1px solid white;
+  cursor: pointer;
 }
 
-.AppSettingNav{
-    width: 100%;
-    height: 60px;
-    background: transparent;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
-    background-color: black;
-    border: 1px solid white;
-}
-.AppSettingName{
-    color: white;
-}
-.AppSettingNameContainer{
-    height: 60px;
-    width: 300px;
-    background-color: rgba(146, 146, 146, 0.738);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-.AppSettingMiddleware{
-    background-image: url(../../public/Assets/SettingsMainPage.png);
-    width: 100%;
-    height: 635px;
-}
-.AppSettingMiddlewareName{
-    color: white;
-    width: 100%;
-    height: 78px;
-    padding-top: 20px;
-    padding-left: 81px;
-    font-size: 50px;
-    display: flex;
-    justify-content: flex-start;
-}
-.AllAppSettingMiddleware{
-    display: flex;
-    padding-left: 300px;
-}
-
-.ManageApp{
-   
-    margin: 15px;
-    padding: 40px;
-    border: 2px solid #ccc;
-    display: flex;
-    justify-content: space-evenly;
-    color: white;
-    font-size: 40px;
-    background-color: rgba(146, 146, 146, 0.738);
-    width: 1000px;
-    
+.ManageApp {
+  height: 100px;
+  /* margin: 15px; */
+  /* padding: 40px; */
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 40px;
+  background-color: rgba(146, 146, 146, 0.738);
+  width: 800px;
 }

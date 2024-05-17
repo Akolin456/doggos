@@ -4,10 +4,10 @@ import ImageView from "../../../public/Assets/Image.png";
 import Minimize from "../../../public/Assets/Minimize.png";
 import Maximize from "../../../public/Assets/Maximize.png";
 import Exit from "../../../public/Assets/Exit.png";
-import Image1 from "../../../public/Assets/image1.jpg";
+import QOP from "../../../public/Assets/qop.jpg";
 import { useHomePageContext } from "@/contexts/HomePageContext";
 
-const ImageViewer = () => {
+const ImageViewerComponent = () => {
   const {
     imageViewerState,
     imageObj,
@@ -18,7 +18,7 @@ const ImageViewer = () => {
 
   const handleExit = () => {
     SetimageViewerState(false);
-    SetfolderState(true);
+    // SetfolderState(true);
   };
 
   if (imageViewerState)
@@ -49,11 +49,11 @@ const ImageViewer = () => {
           </div>
         </div>
         <div className={Styles.body}>
-          <Image src={imageObj} height={812} width={1904} />
+          <Image src={QOP} height={870} width={1904} />
           {/* {console.log(imageValue, "imagevalue")} */}
         </div>
       </div>
     );
 };
 
-export default ImageViewer;
+export default ImageViewerComponent;
