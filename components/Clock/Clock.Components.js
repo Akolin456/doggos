@@ -16,6 +16,7 @@ function DigitalClock({ initialTime }) {
 
   return (
     <div className={Styles.Wholepage}>
+      <div className={Styles.Back}>Back</div>
       <div className={Styles.Digital}>Digital Clock</div>
       <div className={Styles.Formatted}>{formattedTime}</div>
     </div>

@@ -29,3 +29,14 @@
     padding-left: 10px;
    
 }
+
+.Back{
+    border-radius: 1px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    padding-left: 26px;
+    width: 86px;
+    margin-top: 5px;
+    margin-right: 1436px;
+}
