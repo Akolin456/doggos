@@ -21,9 +21,12 @@ import Download from "../../../public/Assets/Download.png";
 import Document from "../../../public/Assets/Document.png";
 import Picture from "../../../public/Assets/Image.png";
 import Music from "../../../public/Assets/Music.png";
-
+import Notepad from "../../../public/Assets/Notepad.png";
+import ImageviewerIcon from "../../../public/Assets/Image.png";
 import MediaPlayer from "../../../public/Assets/MediaPlayer.png";
-
+import OpenFlow from "../../../public/Assets/Openflow.png";
+import CreateFlow from "../../../public/Assets/Createflow.png";
+import DeleteFlow from "../../../public/Assets/Deleteflow.png";
 import Image from "next/image";
 import { useHomePageContext } from "@/contexts/HomePageContext";
 import { useEffect, useState } from "react";
@@ -46,7 +49,15 @@ const Folder = () => {
     { object: Music, name: "Music" },
     { object: MediaPlayer, name: "Videos" },
   ];
-  const { folderState, SetfolderState } = useHomePageContext();
+  const {
+    folderState,
+    SetfolderState,
+    SetTextEditorState,
+    SetimageViewerState,
+    SetOpenFlowState,
+    SetDeleteFlow,
+    SetCreateFlow,
+  } = useHomePageContext();
   const [pathArray, setpathArray] = useState(["Home"]);
 
   const [selectedCategory, SetselectedCategory] = useState({
@@ -79,23 +90,30 @@ const Folder = () => {
     SetselectedCategoryObjects(selectedObj1);
   };
 
-  const handleFolderClick = (name) => {
-    pathArray.push(name);
-    setpathArray(pathArray);
-    let childObj = responseDataobj;
-    pathArray.map((a, i) => {
-      // console.log(childObj, pathArray, "childobj");
-      if (i !== 0) {
-        childObj = childObj[a].children;
-      } else {
-        childObj = childObj[a].children;
-      }
-    });
-    const childArray = [];
-    Object.keys(childObj).forEach((a) => {
-      childArray.push(childObj[a]);
-    });
-    SetselectedCategoryObjects(childArray);
+  const handleFolderClick = (name, type) => {
+    if (type === "text") {
+      SetTextEditorState(true);
+    } else if (type === "image") {
+      SetimageViewerState(true);
+    } else {
+      pathArray.push(name);
+      setpathArray(pathArray);
+      let childObj = responseDataobj;
+      pathArray.map((a, i) => {
+        // console.log(childObj, pathArray, "childobj");
+        if (i !== 0) {
+          childObj = childObj[a].children;
+        } else {
+          childObj = childObj[a].children;
+        }
+      });
+      const childArray = [];
+      Object.keys(childObj).forEach((a) => {
+        childArray.push(childObj[a]);
+      });
+      SetselectedCategoryObjects(childArray);
+      SetOpenFlowState(true);
+    }
   };
   const handleCategorySelect = async ({ object, name }) => {
     const response = await getDirectory(name);
@@ -105,6 +123,7 @@ const Folder = () => {
     SetresponseDataobj(response["data"]);
     SetbackFolderCache([]);
     setpathArray([name]);
+    SetOpenFlowState(true);
   };
   const handleBack = () => {
     const temp = pathArray.pop();
@@ -151,6 +170,7 @@ const Folder = () => {
     handleGetChildrenforCategory(pathArray[0], response["data"]);
     SetresponseDataobj(response["data"]);
     SetbackFolderCache([]);
+    SetDeleteFlow(true);
   };
   const handleDropdownArrow = () => {
     if (folderCreateDropdownState) {
@@ -166,6 +186,7 @@ const Folder = () => {
     SetbackFolderCache([]);
     SetFolderCreateDropdownState(false);
     SetCreateFolderInput("");
+    SetCreateFlow(true);
     // setpathArray([name]);
   };
 
@@ -175,8 +196,8 @@ const Folder = () => {
         <div className={Styles.folderBackground}>
           <div className={Styles.navBar}>
             <div className={Styles.folderNameContainer}>
-              <Image src={selectedCategory.object} height={30} width={35} />
-              <div className={Styles.folderName}>{selectedCategory.name}</div>
+              <Image src={File} height={30} width={35} />
+              <div className={Styles.folderName}>{pathArray[0]}</div>
             </div>
             <div
               className={Styles.navigation}
@@ -218,9 +239,9 @@ const Folder = () => {
               <Image src={ToDesktop} />
             </div>
             <div className={Styles.path}>
-              <Image src={selectedCategory.object} height={30} />
+              {/* <Image src={File} height={30} /> */}
               <Image src={ArrowRight} height={30} width={30} />
-              <div className={Styles.folderName}>{selectedCategory.name}</div>
+              <div className={Styles.folderName}>{pathArray[0]}</div>
             </div>
             <div className={Styles.searchInFolder}>
               <div className={Styles.folderName}>Search</div>
@@ -313,10 +334,21 @@ const Folder = () => {
                       >
                         <div
                           className={Styles.contentName}
-                          onClick={() => handleFolderClick(_id)}
+                          onClick={() => handleFolderClick(_id, type)}
                           style={{ cursor: "pointer" }}
                         >
-                          <Image src={File} height={30} width={30} alt="file" />
+                          <Image
+                            src={
+                              type === "text"
+                                ? Notepad
+                                : type === "image"
+                                ? ImageviewerIcon
+                                : File
+                            }
+                            height={30}
+                            width={30}
+                            alt="file"
+                          />
                           {_id}
                         </div>
                         <div className={Styles.contentSize}>{size}</div>
@@ -342,27 +374,3 @@ const Folder = () => {
 };
 
 export default Folder;
-
-// useEffect(() => {
-//   pathArray.push(selectedCategory.name);
-
-//   setPathArray([...pathArray]);
-//   handleGetChildren(pathArray);
-// }, []);
-
-// const handleCategorySelect = ({ object, name }) => {
-//   const newArray1 = [];
-//   newArray1.push(name);
-//   console.log(pathArray, newArray1, "path2");
-//   handleGetChildren(newArray1);
-// };
-
-// const handleGetChildren = (newArray1) => {
-//   if (!newkindofobj[newArray1[newArray1.length - 1]]) return;
-//   const selectedObj1 = Object.values(
-//     newkindofobj[newArray1[newArray1.length - 1]].Children
-//   );
-
-//   SetselectedCategoryObjects(selectedObj1);
-//   setPathArray(newArray1);
-// };

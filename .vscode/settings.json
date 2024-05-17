@@ -12,6 +12,10 @@
     {
       "name": "feature/Sumit-Folder",
       "base": "feature/Sumit-Homepage"
+    },
+    {
+      "name": "feature/sumit-settings",
+      "base": "develop"
     }
   ]
 }

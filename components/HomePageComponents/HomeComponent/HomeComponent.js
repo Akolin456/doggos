@@ -9,10 +9,27 @@ import Image from "next/image";
 import Menu from "../Menu/Menu";
 import { useHomePageContext } from "@/contexts/HomePageContext";
 import Folder from "@/components/common/Folder/Folder";
-import ImageViewer from "@/components/common/ImageViewer/ImageViewer";
-
+// import ImageViewer from "@/components/common/ImageViewer/ImageViewer";
+import ImageViewerComponent from "@/components/common/ImageViewer/ImageViewerComponent";
+import SettingsComponent from "@/components/Settings/Settings";
+import TextEditor from "@/components/common/TextEditor/TextEditor";
+import OpenFlowimg from "../../../public/Assets/Openflow.png";
+import CreateFlowimg from "../../../public/Assets/Createflow.png";
+import DeleteFlowimg from "../../../public/Assets/Deleteflow.png";
 const HomePage = () => {
-  const { SetmenuState, SetfolderState } = useHomePageContext();
+  const {
+    SetmenuState,
+    SetfolderState,
+    SetsettingsState,
+    flowPopUpState,
+    SetflowPopUpState,
+    OpenFlow,
+    DeleteFlow,
+    CreateFlow,
+    SetOpenFlowState,
+    SetDeleteFlow,
+    SetCreateFlow,
+  } = useHomePageContext();
 
   const handleMenuClick = () => {
     SetmenuState(true);
@@ -21,14 +38,31 @@ const HomePage = () => {
     SetfolderState(true);
   };
 
+  const handleSettingsClick = () => {
+    SetsettingsState(true);
+  };
+  const handlePopup = () => {
+    if (flowPopUpState) {
+      SetflowPopUpState(false);
+      SetOpenFlowState(false);
+      SetCreateFlow(false);
+      SetDeleteFlow(false);
+    } else {
+      SetflowPopUpState(true);
+    }
+  };
+
   const [cookie] = useCookies(["JWTtoken"]);
 
   // console.log(cookie.name, "homepage cookie");
   return (
     <div className={Styles.HomePage}>
       <Folder />
-      <ImageViewer />
+
       <Menu />
+      <SettingsComponent />
+      <TextEditor />
+      <ImageViewerComponent />
       <div className={Styles.menubar}>
         <Image
           className={Styles.RecycleBin}
@@ -85,7 +119,19 @@ const HomePage = () => {
           }}
           onClick={handleMenuClick}
         />
-
+        {flowPopUpState && (
+          <div className={Styles.FlowChartPopUp}>
+            {OpenFlow ? (
+              <Image src={OpenFlowimg} width={500} />
+            ) : CreateFlow ? (
+              <Image src={CreateFlowimg} width={500} />
+            ) : DeleteFlow ? (
+              <Image src={DeleteFlowimg} width={500} />
+            ) : (
+              <div>no items here</div>
+            )}
+          </div>
+        )}
         <Image
           className={Styles.MyPC}
           src={MyPC}
@@ -102,6 +148,7 @@ const HomePage = () => {
             e.target.style.backgroundColor = "#c48f8f63";
             e.target.style.background = "transparent";
           }}
+          onClick={handlePopup}
         />
 
         <Image
@@ -120,6 +167,7 @@ const HomePage = () => {
             e.target.style.backgroundColor = "#c48f8f63";
             e.target.style.background = "transparent";
           }}
+          onClick={handleSettingsClick}
         />
       </div>
     </div>

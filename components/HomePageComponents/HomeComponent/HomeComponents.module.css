@@ -8,7 +8,6 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  
 }
 .menubar {
   height: 51px;
@@ -39,7 +38,6 @@
 
 .RecycleBin {
   width: 36px;
-  
 }
 .FileManagerIcon {
   height: 30px;
@@ -52,6 +50,18 @@
 .OSiconblack {
   height: 37px;
   width: 35px;
+  position: relative;
+}
+.FlowChartPopUp {
+  height: 700px;
+  width: 500px;
+  background-color: lightseagreen;
+  border: 1px solid white;
+  position: absolute;
+  bottom: calc(100%);
+  border-radius: 5px;
+  left: calc(195%);
+  overflow-y: scroll;
 }
 .Settings {
   height: 33px;
